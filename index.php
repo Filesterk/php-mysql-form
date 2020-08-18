@@ -45,7 +45,7 @@
   </div>
 </nav>
 
-<form action="index.php" method="GET" style=" border:1px solid #000; padding: 20px;">    <!--method="POST"-->
+<form action="form.php" method="GET" style=" border:1px solid #000; padding: 20px;">    <!--method="POST"-->
 <div class="form-group">
     <label for="formGroupExampleInput">Login name</label>
     <input name="user" type="text" class="form-control" id="formGroupExampleInput" value="Pupkin" placeholder="Login">
@@ -102,13 +102,12 @@ if( !empty($_GET) ) {
   echo "Массив _GET пустой";
 }
 
-//http://formserver/index.php
+//http://formserver/index.php   
 // var_dump($_POST);
 // echo '<br>';
 // echo $_POST['user'];
- ?>
-
-<?php
+ 
+//проверка нажатия checkbox
 	if (isset($_REQUEST['hello']) and $_REQUEST['hello'] == 0) {
 		echo 'вы не согласны с данными';
 	}
@@ -117,13 +116,14 @@ if( !empty($_GET) ) {
 		echo 'вы согласны с данными';
 	}
 ?>
-
 <br/>
+
 <?php
-   print_r($_GET);
-   echo $_GET["user"];
+   print_r($_GET);  //вывод массива
+   echo $_GET["user"];  //вывод имени после массива
 ?>
 
+<br/>
 <!--Исправить-->
 <?php
   if(isset($_GET["send"])) {
@@ -133,7 +133,6 @@ if( !empty($_GET) ) {
         header("Location:index.php");
   }
 ?>
-
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>

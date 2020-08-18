@@ -7,7 +7,7 @@
 </head>
 <body>
    
-   <?php require_once 'process.php' ?>
+   <?php require_once 'process.php' ?>    <!--подключение 'process.php'-->
    <form action="" method="POST">
       <input type="hidden" name='hidden' value='secret hidden code'>
          <p>First name: <input type="text" name='firstname' value=''></p>
@@ -24,3 +24,4 @@ function pre_r( $array ) {
    print_r($array);
    echo '</pre>';
 }
+?>
