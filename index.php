@@ -45,7 +45,7 @@
   </div>
 </nav>
 
-<form action="form.php" method="GET" style=" border:1px solid #000; padding: 20px;">    <!--method="POST"-->
+<form action="index.php" method="GET" style=" border:1px solid #000; padding: 20px;">    <!--method="POST"-->
 <div class="form-group">
     <label for="formGroupExampleInput">Login name</label>
     <input name="user" type="text" class="form-control" id="formGroupExampleInput" value="Pupkin" placeholder="Login">
@@ -66,24 +66,28 @@
   <button name="send" type="submit" class="btn btn-primary" value="отправить">Submit</button>
 </form>
 </div>
+
 <?php
+//http://formserver/index.php   method POST
 //http://formserver/index.php?login=Pupkin
 //http://formserver/index.php?user=Pupkin&password=10kn
 //http://formserver/index.php?user=Ivanov&password=1df234k
 //http://formserver/index.php?user=Pupkin&password=10kn&textarea=text
 
+//Выводит информацию о переменной
 var_dump($_GET);
-$a = $_GET['password'];
+$a = $_GET['password'];   //задание переменных
 $b = 'user';
 $c = $_GET[$b];
 $d = $_GET['textarea'];
-// echo $a;
+//echo $a;
 echo '<br>';
 // echo $c;
 //var_dump( isset($_GET['password']));  //существует ли переменная в массиве
 //var_dump( $_GET['password'] !== ''); //проверка на пустую строку
 //var_dump( trim($_GET['password']) !== ''); //проверка на все пробелы
 
+// вывод переменной при наличии, отмена пробелов
 // if (isset($_GET['password']) AND trim($_GET['password']) !=='') {
 //   $b = trim($_GET['password']);
 //   echo $b;
