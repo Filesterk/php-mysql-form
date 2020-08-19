@@ -45,7 +45,7 @@
   </div>
 </nav>
 
-<form action="form.php" method="GET" style=" border:1px solid #000; padding: 20px;">    <!--method="POST"-->
+<form action="index.php" method="GET" style=" border:1px solid #000; padding: 20px;">    <!--method="POST"-->
 <div class="form-group">
     <label for="formGroupExampleInput">Login name</label>
     <input name="user" type="text" class="form-control" id="formGroupExampleInput" value="Pupkin" placeholder="Login">
@@ -66,6 +66,8 @@
   <button name="send" type="submit" class="btn btn-primary" value="отправить">Submit</button>
 </form>
 </div>
+
+<h1><a href="mysqltable.php">Go to table</a> <br></h1>
 
 <?php
 //http://formserver/index.php   method POST
@@ -132,6 +134,37 @@ if( !empty($_GET) ) {
     else
         header("Location:index.php");
   }
+?>
+
+<!--Подключение к БД-->
+<?php
+  error_reporting(E_ALL);
+  ini_set(`display_errors`, `on`);
+
+  $host = 'localhost';
+  $user = 'root';
+  $password = '';
+  $dbName = 'test';
+
+  $link = mysqli_connect($host, $user, $password, $dbName) //запрос из БД
+      or die(mysqli_error($link)); //искусственный вывод ошибок SQL
+
+  mysqli_query($link, "SET NAMES 'utf8'"); //задание кодировки
+
+  $query = "SELECT * FROM users WHERE id > 0";
+
+  $result = mysqli_query($link, $query) or die(mysqli_error($link)); //запрос в БД
+
+  var_dump($result);
+
+/*  получение 1 строки из массива
+  $user = mysqli_fetch_assoc($result);
+  var_dump($user);
+*/
+
+  for ($data = []; $row = mysqli_fetch_assoc($result); $data[] = $row);  //получение всего массива
+  var_dump($data);
+  //Parse error: syntax error, unexpected 'or' (T_LOGICAL_OR), expecting end of file in W:\domains\formServer\index.php on line 148
 ?>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
