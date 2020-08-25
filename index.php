@@ -1,9 +1,11 @@
 <?php
-  require_once 'include/same-form-data.php';
-  require_once 'include/db-connect.php';
+require_once 'include/same-form-data.php';
+require_once 'include/db-connect.php';
+
+$dbLink = setup_db_connection('', '', '', ''); // call this function on the start of the script
 ?>
 <pre>
-<?php print_r($categories); ?>
+<?php //print_r($categories); ?>
 </pre>
 
 <!DOCTYPE html>
