@@ -8,7 +8,7 @@
 <body>
    <h1>После отправки формы</h1>
       <a href="index.php">Back to send</a> <br>
-      <a href="list.php">Message list</a> <br>
+      <a href="testfiles/list.php">Message list</a> <br>
 </body>
 </html>
 

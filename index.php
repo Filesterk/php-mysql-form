@@ -1,3 +1,11 @@
+<?php
+  require_once 'include/same-form-data.php';
+  require_once 'include/db-connect.php';
+?>
+<pre>
+<?php print_r($categories); ?>
+</pre>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,14 +18,14 @@
 
 <div class="container" style="background-color:#d6d6d6; padding-bottom: 20px;">
 <?php
-require('navbar.php');  //require_once
+require('testfiles/navbar.php');  //require_once
 ?>
 <?php
-include('someform.php');  //include_once
+include('testfiles/someform.php');  //include_once
 ?>
 </div>
 
-<h1><a href="mysqltable.php">Go to table</a> <br></h1>
+<h1><a href="testfiles/mysqltable.php">Go to table</a> <br></h1>
 
 <?php
 //http://formserver/index.php   method POST
@@ -88,7 +96,7 @@ if( !empty($_GET) ) {
 
 <!--Подключение к БД-->
 <?php
-require_once('includedbtest.php');
+require_once('testfiles/includedbtest.php');
 ?>
 
 

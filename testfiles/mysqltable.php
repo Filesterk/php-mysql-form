@@ -52,7 +52,7 @@ for ($data = []; $row = mysqli_fetch_assoc($result); $data[] = $row);   //пре
       <tr>
          <td><?= $user['id'] ?></td>
          <td><?= $user['name'] ?></td>
-         <td><a href="mysqltable.php?del=<?= $user['id'] ?>">delete</a></td>
+         <td><a href="testfiles/mysqltable.php?del=<?= $user['id'] ?>">delete</a></td>
       </tr>
    <?php } ?>
    </table>
