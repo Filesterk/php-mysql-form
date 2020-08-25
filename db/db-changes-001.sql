@@ -1,0 +1,3 @@
+-- Write here your first database changes
+-- CREATE TABLE ...
+-- Everyone should be possible to replicate your database schema
