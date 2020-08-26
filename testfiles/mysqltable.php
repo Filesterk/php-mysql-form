@@ -5,16 +5,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Document</title>
 
-   <style>
-      table{
-         width:300px;  
-      }
-      td{
-         border: 1px solid #000;
-         text-align: center;
-      }
-   </style>
-   
+    <!--Do not use any css styles so far! Use only bootstrap markup!-->
 </head>   
 <body>
    
