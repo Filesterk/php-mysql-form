@@ -7,7 +7,7 @@
 </head>
 <body>
    
-   <?php require_once 'testfiles/process.php' ?>    <!--подключение 'process.php'-->
+   <?php require_once 'process.php' ?>    <!--подключение 'process.php'-->
    <form action="" method="POST">
       <input type="hidden" name='hidden' value='secret hidden code'>
          <p>First name: <input type="text" name='firstname' value=''></p>

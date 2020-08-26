@@ -1,4 +1,4 @@
-<form action="index.php" method="GET" style=" border:1px solid #000; padding: 20px;">    <!--method="POST"-->
+<form action="testfiles/form.php" method="GET" style=" border:1px solid #000; padding: 20px;">    <!--action="save-form-data.php" method="POST"-->
 <div class="form-group">
     <label for="formGroupExampleInput">Login name</label>
     <input name="user" type="text" class="form-control" id="formGroupExampleInput" value="Pupkin" placeholder="Login">
