@@ -30,9 +30,17 @@ function setup_db_connection(string $host, string $user, string $password, strin
  */
 function get_all_records(string $tableName): array
 {
-    $result = [];
-    // Your code !
+    $sql = "SELECT * FROM tovar"; 
+    $result = [get_all_records()->query($sql)];
+
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            echo "<br> id: ". $row["id"]. "<br> name: ". $row["name"]. "<br> model: ". $row["model"]. "<br> price: ". $row["price"];
+        }
+    }
+     //Your code !
     return $result;
+    get_all_records()->close();
 }
 
 /**
@@ -43,10 +51,18 @@ function get_all_records(string $tableName): array
  */
 function get_record_by_id(int $recordId, string $tableName): array
 {
+    $result = "INSERT INTO `tovar`(`id`, `name`, `model`, `price`) VALUES (NULL, `$name`, `$model`, `$price`)";
 
-    $result = [];
+    if (insert_record_by_id()->query($result) === TRUE) {
+        $last_id = insert_record_by_id()->insert_id;
+        echo "last id" . $last_id;       
+    }
+
+    //$result = [$link];
     // Your code !
     return $result;
+    
+    get_record_by_id()->close();
 }
 
 /**
@@ -56,5 +72,11 @@ function get_record_by_id(int $recordId, string $tableName): array
  */
 function insert_new_record(array $recordData, string $tableName)
 {
+    $sql = "INSERT INTO `tovar`(`id`, `name`, `model`, `price`) VALUES (NULL, `$name`, `$model`, `$price`)";
 
+    if (insert_new_record()->query($sql) === TRUE) {
+        echo "Record created";
+       
+    }
+    insert_new_record()->close();
 }

@@ -2,7 +2,7 @@
 // I have removed require_once 'save-form-data.php'; Because it will be absolutely another http request. You will see later
 require_once 'db-connect.php';
 
-$dbLink = setup_db_connection('localhost', 'root', '', 'alex_sandbox'); // call this function on the start of the script
+//$dbLink = setup_db_connection('localhost', 'root', '', 'alex_sandbox'); // call this function on the start of the script
 ?>
 
 <!DOCTYPE html>
@@ -20,8 +20,28 @@ $dbLink = setup_db_connection('localhost', 'root', '', 'alex_sandbox'); // call 
 require('testfiles/navbar.php');  //require_once
 ?>
 <?php
-include('testfiles/someform.php');  // @todo: Hide this form
+//include('testfiles/someform.php');  // @todo: Hide this form    
 // @todo: show me the form to add a new record to the `item` table
+?>
+
+<form method="post" action="">
+    <p>Name:</p>
+    <input id="name" name="name" type="text" size="30" /><br />
+    <p>Model:</p>
+    <input id="model" name="model" type="text" size="30" /><br />
+    <p>Price:</p>
+    <input id="price" name="price" type="number" size="30" /><br />
+    
+    <input type="submit" name="Submit" value="Submit" />
+  </form>
+
+  <?php
+  require_once 'db-connect.php';
+  $name = $_POST['name'];
+  $model = $_POST['model'];
+  $price = $_POST['price'];
+
+  mysqli_query ($link, query: "INSERT INTO `tovar` (`id`, `name`, `model`, `price`) VALUES (NULL, `$name`, `$model`, `$price`)");
 ?>
 </div>
 
