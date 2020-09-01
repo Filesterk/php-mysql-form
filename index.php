@@ -41,7 +41,8 @@ require('testfiles/navbar.php');  //require_once
   $model = $_POST['model'];
   $price = $_POST['price'];
 
-  mysqli_query ($link, query: "INSERT INTO `tovar` (`id`, `name`, `model`, `price`) VALUES (NULL, `$name`, `$model`, `$price`)");
+  $conn = "INSERT INTO `tovar` (`id`, `name`, `model`, `price`) VALUES (NULL, `$name`, `$model`, `$price`)";
+  mysqli_query ($link, $conn);
 ?>
 </div>
 

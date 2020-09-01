@@ -30,17 +30,22 @@ function setup_db_connection(string $host, string $user, string $password, strin
  */
 function get_all_records(string $tableName): array
 {
-    $sql = "SELECT * FROM tovar"; 
-    $result = [get_all_records()->query($sql)];
+    // $tableName = mysqli_query("SELECT * FROM tovar", alex_sandbox);
+    // $result = mysqli_fetch_array($tableName);
 
-    if ($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-            echo "<br> id: ". $row["id"]. "<br> name: ". $row["name"]. "<br> model: ". $row["model"]. "<br> price: ". $row["price"];
-        }
+    $tableName = "SELECT * FROM tovar";
+
+    $result = mysqli_query($tableName);
+
+    while ($row = mysqli_fetch_assoc($result)) {
+        echo $row["id"];
+        echo $row["name"];
+        echo $row["model"];
+        echo $row["price"];
     }
+
      //Your code !
     return $result;
-    get_all_records()->close();
 }
 
 /**
@@ -50,19 +55,18 @@ function get_all_records(string $tableName): array
  * @todo: Write a function that will get single record from known table with known id
  */
 function get_record_by_id(int $recordId, string $tableName): array
-{
-    $result = "INSERT INTO `tovar`(`id`, `name`, `model`, `price`) VALUES (NULL, `$name`, `$model`, `$price`)";
+{  
+    $result = [$link];
 
-    if (insert_record_by_id()->query($result) === TRUE) {
-        $last_id = insert_record_by_id()->insert_id;
-        echo "last id" . $last_id;       
+    $recordId = 'SELECT model FROM tovar WHERE id = 2';
+    $result = mysql_query($recordId, $link);
+
+    while ($row = mysql_fetch_assoc($result)) {
+        echo $row['model'];
     }
-
-    //$result = [$link];
-    // Your code !
-    return $result;
     
-    get_record_by_id()->close();
+    // Your code !
+    return $result;    
 }
 
 /**
@@ -72,11 +76,12 @@ function get_record_by_id(int $recordId, string $tableName): array
  */
 function insert_new_record(array $recordData, string $tableName)
 {
-    $sql = "INSERT INTO `tovar`(`id`, `name`, `model`, `price`) VALUES (NULL, `$name`, `$model`, `$price`)";
+    $recordData = INSERT INTO `tovar`(`id`, `name`, `model`, `price`):
+    $tableName = (NULL, `$name`, `$model`, `$price`);
+
+    $sql = "$recordData . VALUES . $tableName";
 
     if (insert_new_record()->query($sql) === TRUE) {
-        echo "Record created";
-       
+        echo "Record created";       
     }
-    insert_new_record()->close();
 }
