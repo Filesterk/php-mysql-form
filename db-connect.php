@@ -33,6 +33,8 @@ function get_all_records(string $tableName): array
     // $tableName = mysqli_query("SELECT * FROM tovar", alex_sandbox);
     // $result = mysqli_fetch_array($tableName);
 
+    // Аргумент называется $tableName. Подумай почему
+    // Если б я хотел, чтоб там было sql выражение, я б назвал ее $sqlExpression
     $tableName = "SELECT * FROM tovar";
 
     $result = mysqli_query($tableName);
@@ -55,7 +57,9 @@ function get_all_records(string $tableName): array
  * @todo: Write a function that will get single record from known table with known id
  */
 function get_record_by_id(int $recordId, string $tableName): array
-{  
+{
+    // почитай еще раз про область видимости переменных
+    // Очевидно, что внутри этой функции $link, не определена
     $result = [$link];
 
     $recordId = 'SELECT model FROM tovar WHERE id = 2';
@@ -76,6 +80,7 @@ function get_record_by_id(int $recordId, string $tableName): array
  */
 function insert_new_record(array $recordData, string $tableName)
 {
+    // Вот к примеру, я -- пхп. Я вообще не знаю, что такое INSERT, что такое INTO
     $recordData = INSERT INTO `tovar`(`id`, `name`, `model`, `price`):
     $tableName = (NULL, `$name`, `$model`, `$price`);
 
