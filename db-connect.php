@@ -24,11 +24,12 @@ function setup_db_connection(string $host, string $user, string $password, strin
 }
 
 /**
+ * @param mysqli $link
  * @param string $tableName
  * @return array
  * @todo: Write a function that will get all records from known table
  */
-function get_all_records(string $tableName): array
+function get_all_records(mysqli $link, string $tableName): array
 {
     $host = 'localhost';  
     $user = 'root';    
@@ -47,6 +48,7 @@ function get_all_records(string $tableName): array
         echo $row["model"];
         echo $row["price"];
     }
+    
     return $result;
     //$result = [$link];
      //Your code !
