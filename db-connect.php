@@ -24,13 +24,13 @@ function setup_db_connection(string $host, string $user, string $password, strin
 }
 
 /**
+ * @param mysqli $link
  * @param string $tableName
  * @return array
  * @todo: Write a function that will get all records from known table
  */
-function get_all_records(string $tableName): array
+function get_all_records(mysqli $link, string $tableName): array
 {
-    // Подсказка: Вызови внутри этой функции функцию setup_db_connection(), чтобы получить $link
     // $tableName = mysqli_query("SELECT * FROM tovar", alex_sandbox);
     // $result = mysqli_fetch_array($tableName);
 
