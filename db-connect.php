@@ -30,14 +30,16 @@ function setup_db_connection(string $host, string $user, string $password, strin
  */
 function get_all_records(string $tableName): array
 {
-    // $tableName = mysqli_query("SELECT * FROM tovar", alex_sandbox);
-    // $result = mysqli_fetch_array($tableName);
-
+    $host = 'localhost';  
+    $user = 'root';    
+    $password = ''; 
+    $dbName = 'alex_sandbox';
     // Аргумент называется $tableName. Подумай почему
     // Если б я хотел, чтоб там было sql выражение, я б назвал ее $sqlExpression
-    $tableName = "SELECT * FROM tovar";
+    $link = mysqli_connect($host, $user, $password, $dbName);
+    $tableName = 'alex_sandbox';
 
-    $result = mysqli_query($tableName);
+    $result = mysqli_query(link, "SELECT * FROM $tableName");
 
     while ($row = mysqli_fetch_assoc($result)) {
         echo $row["id"];
@@ -45,9 +47,10 @@ function get_all_records(string $tableName): array
         echo $row["model"];
         echo $row["price"];
     }
-
-     //Your code !
     return $result;
+    //$result = [$link];
+     //Your code !
+    //return $result;
 }
 
 /**
@@ -60,6 +63,7 @@ function get_record_by_id(int $recordId, string $tableName): array
 {
     // почитай еще раз про область видимости переменных
     // Очевидно, что внутри этой функции $link, не определена
+    $link = mysqli_connect($host, $user, $password, $dbName, $port);
     $result = [$link];
 
     $recordId = 'SELECT model FROM tovar WHERE id = 2';
@@ -68,9 +72,10 @@ function get_record_by_id(int $recordId, string $tableName): array
     while ($row = mysql_fetch_assoc($result)) {
         echo $row['model'];
     }
-    
+
+    //$result = [$link];
     // Your code !
-    return $result;    
+    //return $result;    
 }
 
 /**
