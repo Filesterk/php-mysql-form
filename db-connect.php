@@ -38,6 +38,9 @@ function get_all_records(string $tableName): array
     // Если б я хотел, чтоб там было sql выражение, я б назвал ее $sqlExpression
     $tableName = "SELECT * FROM tovar";
 
+    // Эта строчка должна работать, если ты уже вызвал ранее, даже вне этой функции setup_db_connection(), т.е. открыл подключение
+    // в этом случае ты будешь вызывать процедурный аналог $link->query().
+    // т.е. $link->query() и mysql_query() делают то же самое, только в первом случае тебе надо иметь в области видимости $link
     $result = mysqli_query($tableName);
 
     while ($row = mysqli_fetch_assoc($result)) {
