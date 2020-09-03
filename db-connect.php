@@ -30,6 +30,7 @@ function setup_db_connection(string $host, string $user, string $password, strin
  */
 function get_all_records(string $tableName): array
 {
+    // Подсказка: Вызови внутри этой функции функцию setup_db_connection(), чтобы получить $link
     // $tableName = mysqli_query("SELECT * FROM tovar", alex_sandbox);
     // $result = mysqli_fetch_array($tableName);
 
