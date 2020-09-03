@@ -35,25 +35,39 @@ function get_all_records(mysqli $link, string $tableName): array
     $user = 'root';    
     $password = ''; 
     $dbName = 'alex_sandbox';
-    // Аргумент называется $tableName. Подумай почему
-    // Если б я хотел, чтоб там было sql выражение, я б назвал ее $sqlExpression
+
+    $link = mysqli_connect($host, $user, $password, $dbName);
+
+    $tableName = 'tovar';
+    if ($result = mysqli_query($link, "SELECT * FROM $tableName", MYSQLI_USE_RESULT)) {
+        if (!mysqli_query($link, "SET @a:='this will not work'")) {
+            printf("Ошибка: %s\n", mysqli_error($link));
+        }
+        mysqli_free_result($result);
+    }
+    
+    mysqli_close($link);
+    return $result;
+}
+    /*$host = 'localhost';  
+    $user = 'root';    
+    $password = ''; 
+    $dbName = 'alex_sandbox';
     $link = mysqli_connect($host, $user, $password, $dbName);
     $tableName = 'alex_sandbox';
-
     $result = mysqli_query(link, "SELECT * FROM $tableName");
-
     while ($row = mysqli_fetch_assoc($result)) {
         echo $row["id"];
         echo $row["name"];
         echo $row["model"];
         echo $row["price"];
-    }
+    }*/
+
     
-    return $result;
     //$result = [$link];
      //Your code !
     //return $result;
-}
+
 
 /**
  * @param int $recordId
@@ -88,8 +102,8 @@ function get_record_by_id(int $recordId, string $tableName): array
 function insert_new_record(array $recordData, string $tableName)
 {
     // Вот к примеру, я -- пхп. Я вообще не знаю, что такое INSERT, что такое INTO
-    $recordData = INSERT INTO `tovar`(`id`, `name`, `model`, `price`):
-    $tableName = (NULL, `$name`, `$model`, `$price`);
+    //$recordData = INSERT INTO `tovar`(`id`, `name`, `model`, `price`):
+    //$tableName = (NULL, `$name`, `$model`, `$price`);
 
     $sql = "$recordData . VALUES . $tableName";
 

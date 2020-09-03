@@ -24,26 +24,47 @@ require('testfiles/navbar.php');  //require_once
 // @todo: show me the form to add a new record to the `item` table
 ?>
 
-<form method="post" action="">
-    <p>Name:</p>
-    <input id="name" name="name" type="text" size="30" /><br />
-    <p>Model:</p>
-    <input id="model" name="model" type="text" size="30" /><br />
-    <p>Price:</p>
-    <input id="price" name="price" type="number" size="30" /><br />
-    
-    <input type="submit" name="Submit" value="Submit" />
-  </form>
+<form action="index.php" method="POST">
+  <div class="form-group">
+    <label>Name:</label>
+    <input type="text" class="form-control" name="name" id="name">
+  </div>
+  <div class="form-group">
+    <label>Model:</label>
+    <input type="text" class="form-control" name="model" id="model">
+  </div>
+  <div class="form-group">
+    <label>Price:</label>
+    <input type="number" class="form-control" name="price" id="price">
+  </div>
+  <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+</form>
 
   <?php
-  require_once 'db-connect.php';
-  $name = $_POST['name'];
-  $model = $_POST['model'];
-  $price = $_POST['price'];
+      //require_once 'db-connect.php';
+      $errors = "";
+      $host = 'localhost';
+      $user = 'root';
+      $password = '';
+      $dbName = 'alex_sandbox';
+      $tableName = 'tovar';
+      $link = mysqli_connect($host, $user, $password, $dbName);
+      $name = $_POST['name'];
+      $model = $_POST['model'];
+      $price = $_POST['price'];
 
-  $conn = "INSERT INTO `tovar` (`id`, `name`, `model`, `price`) VALUES (NULL, `$name`, `$model`, `$price`)";
-  mysqli_query ($link, $conn);
-?>
+      if (isset($_POST['submit'])) {
+
+        if (!isset($name, $model, $price)) {
+          $errors = "Error! Fill in the field!";
+        } else {  
+             
+          $query = "INSERT INTO $tableName (`id`, `name`, `model`, `price`) 
+          VALUES (NULL, `$name`, `$model`, `$price`)";
+          mysqli_query($link, $query);
+      }
+    }
+  ?>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
