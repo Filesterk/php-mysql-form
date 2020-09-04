@@ -41,9 +41,11 @@ function get_all_records(mysqli $link, string $tableName): array
     $tableName = 'item';
 
     if ($result = mysqli_query($link, "SELECT * FROM $tableName", MYSQLI_USE_RESULT)) {
-        if (!mysqli_query($link, "SET @a:='this will not work'")) {
-            printf("Ошибка: %s\n", mysqli_error($link));
-        }
+//        При использовании MYSQLI_USE_RESULT все последующие вызовы этой функции будут возвращать ошибку Commands out of sync до тех пор, пока не будет вызвана функция mysqli_free_result()
+        // а ты как раз вызываешь еще до mysqli_free_result
+//        if (!mysqli_query($link, "SET @a:='this will not work'")) {  тебе не надо этот блок кода
+//            printf("Ошибка: %s\n", mysqli_error($link));
+//        }
         mysqli_free_result($result);
     }
     
