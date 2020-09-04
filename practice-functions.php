@@ -1,13 +1,11 @@
 <?php
 
-$p = pi();
-$r = 5;
-function areaCircle() {
-   global $p;
-   global $r;
-   echo $p * (pow($r,2));
+function areaCircle(float $r): float {
+   return pi() * (pow($r,2));
 }
-areaCircle();
+
+$result = areaCircle(5);
+echo $result;
 
 // $var = array(5, 10, 15);
 // function average($var) {
