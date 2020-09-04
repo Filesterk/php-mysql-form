@@ -4,8 +4,13 @@ require_once 'db-connect.php'; // Тут ты зареквайрил все фу
 // значит они уже доступны к вызову
 
 // тут получим линк (только используй свои парвильные параметры)
-$dbLink = setup_db_connection('localhost', 'root', '', 'alex_sandbox');
-$allRecords = get_all_records($dbLink, 'tovar');
+  $dbLink = setup_db_connection('localhost', 'root', '', 'alex_sandbox');
+  
+    $name = $_POST['name'];
+    $model = $_POST['model'];
+    $price = $_POST['price'];
+
+  $allRecords = get_all_records($dbLink, 'item');
 // только поменяй имя таблицы, это очень рогато выглядит, пусть будет item или goods
 // теперь у тебя будет результат в виде $allRecords, с которым можно что-то делать
 // например вывести красиво в табличном виде, что я и пытаюсь от тебя добиться
@@ -33,7 +38,7 @@ require('testfiles/navbar.php');  //require_once
 require('practice-functions.php');  //require_once
 ?>
 
-<form action="index.php" method="POST">
+<form action="db-connect.php" method="POST">
   <div class="form-group">
     <label>Name:</label>
     <input type="text" class="form-control" name="name" id="name">
@@ -49,31 +54,6 @@ require('practice-functions.php');  //require_once
   <button type="submit" name="submit" class="btn btn-primary">Submit</button>
 </form>
 
-  <?php
-      //require_once 'db-connect.php';
-      $errors = "";
-      $host = 'localhost';
-      $user = 'root';
-      $password = '';
-      $dbName = 'alex_sandbox';
-      $tableName = 'tovar';
-      $link = mysqli_connect($host, $user, $password, $dbName);
-      $name = $_POST['name'];
-      $model = $_POST['model'];
-      $price = $_POST['price'];
-
-      if (isset($_POST['submit'])) {
-
-        if (!isset($name, $model, $price)) {
-          $errors = "Error! Fill in the field!";
-        } else {  
-             
-          $query = "INSERT INTO $tableName (`id`, `name`, `model`, `price`) 
-          VALUES (NULL, `$name`, `$model`, `$price`)";
-          mysqli_query($link, $query);
-      }
-    }
-  ?>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

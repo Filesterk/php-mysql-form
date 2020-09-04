@@ -29,14 +29,6 @@ function setup_db_connection(string $host, string $user, string $password, strin
  * @return array
  * @todo: Write a function that will get all records from known table
  */
-<<<<<<< HEAD
-=======
-// $host, $user, $password, $dbName -- они же все неопределены здесь !
-    $link = mysqli_connect($host, $user, $password, $dbName);
-
-function get_all_records(mysqli $link, string $tableName): array
-{
->>>>>>> ed8894dad77ec704e68d64f18ec6b6fb97c518a6
     $host = 'localhost';  
     $user = 'root';    
     $password = ''; 
@@ -46,7 +38,7 @@ function get_all_records(mysqli $link, string $tableName): array
 function get_all_records(mysqli $link, string $tableName): array
 {
     
-    $tableName = 'tovar';
+    $tableName = 'item';
 
     if ($result = mysqli_query($link, "SELECT * FROM $tableName", MYSQLI_USE_RESULT)) {
         if (!mysqli_query($link, "SET @a:='this will not work'")) {
@@ -58,19 +50,7 @@ function get_all_records(mysqli $link, string $tableName): array
     mysqli_close($link);
     return $result;
 }
-    /*$host = 'localhost';  
-    $user = 'root';    
-    $password = ''; 
-    $dbName = 'alex_sandbox';
-    $link = mysqli_connect($host, $user, $password, $dbName);
-    $tableName = 'alex_sandbox';
-    $result = mysqli_query(link, "SELECT * FROM $tableName");
-    while ($row = mysqli_fetch_assoc($result)) {
-        echo $row["id"];
-        echo $row["name"];
-        echo $row["model"];
-        echo $row["price"];
-    }*/    
+
     //$result = [$link];
      //Your code !
     //return $result;
