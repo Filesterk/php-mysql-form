@@ -29,7 +29,7 @@ function setup_db_connection(string $host, string $user, string $password, strin
  * @return array
  * @todo: Write a function that will get all records from known table
  */
-
+// $host, $user, $password, $dbName -- они же все неопределены здесь !
     $link = mysqli_connect($host, $user, $password, $dbName);
 
 function get_all_records(mysqli $link, string $tableName): array
