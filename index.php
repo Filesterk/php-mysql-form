@@ -4,9 +4,7 @@ require_once 'db-connect.php'; // Тут ты зареквайрил все фу
 // значит они уже доступны к вызову
 
 // тут получим линк (только используй свои парвильные параметры)
-  $name = $_POST['name'];
-  $model = $_POST['model'];
-  $price = $_POST['price'];
+  
   $dbLink = setup_db_connection('localhost', 'root', '', 'alex_sandbox');
   
   $allRecords = get_all_records($dbLink, 'item');
