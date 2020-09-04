@@ -29,6 +29,14 @@ function setup_db_connection(string $host, string $user, string $password, strin
  * @return array
  * @todo: Write a function that will get all records from known table
  */
+<<<<<<< HEAD
+=======
+// $host, $user, $password, $dbName -- они же все неопределены здесь !
+    $link = mysqli_connect($host, $user, $password, $dbName);
+
+function get_all_records(mysqli $link, string $tableName): array
+{
+>>>>>>> ed8894dad77ec704e68d64f18ec6b6fb97c518a6
     $host = 'localhost';  
     $user = 'root';    
     $password = ''; 

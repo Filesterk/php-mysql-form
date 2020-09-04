@@ -1,8 +1,14 @@
 <?php
-// I have removed require_once 'save-form-data.php'; Because it will be absolutely another http request. You will see later
-require_once 'db-connect.php';
 
-//$dbLink = setup_db_connection('localhost', 'root', '', 'alex_sandbox'); // call this function on the start of the script
+require_once 'db-connect.php'; // Тут ты зареквайрил все функции из db-connect.php
+// значит они уже доступны к вызову
+
+// тут получим линк (только используй свои парвильные параметры)
+$dbLink = setup_db_connection('localhost', 'root', '', 'alex_sandbox');
+$allRecords = get_all_records($dbLink, 'tovar');
+// только поменяй имя таблицы, это очень рогато выглядит, пусть будет item или goods
+// теперь у тебя будет результат в виде $allRecords, с которым можно что-то делать
+// например вывести красиво в табличном виде, что я и пытаюсь от тебя добиться
 ?>
 
 <!DOCTYPE html>
