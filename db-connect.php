@@ -29,15 +29,15 @@ function setup_db_connection(string $host, string $user, string $password, strin
  * @return array
  * @todo: Write a function that will get all records from known table
  */
-
-    $link = mysqli_connect($host, $user, $password, $dbName);
-
-function get_all_records(mysqli $link, string $tableName): array
-{
     $host = 'localhost';  
     $user = 'root';    
     $password = ''; 
     $dbName = 'alex_sandbox';
+    $link = mysqli_connect($host, $user, $password, $dbName);
+
+function get_all_records(mysqli $link, string $tableName): array
+{
+    
     $tableName = 'tovar';
 
     if ($result = mysqli_query($link, "SELECT * FROM $tableName", MYSQLI_USE_RESULT)) {
@@ -66,7 +66,7 @@ function get_all_records(mysqli $link, string $tableName): array
     //$result = [$link];
      //Your code !
     //return $result;
-    
+
 
 /**
  * @param int $recordId
@@ -108,7 +108,7 @@ function insert_new_record(array $recordData, string $tableName)
     $password = ''; 
     $dbName = 'alex_sandbox';
     $tableName = 'tovar';
-    $recordData = (`id`, `name`, `model`, `price`);
+    //$recordData = (`id`, `name`, `model`, `price`);
     $link = mysqli_connect($host, $user, $password, $dbName);
     // Вот к примеру, я -- пхп. Я вообще не знаю, что такое INSERT, что такое INTO
     //$recordData = INSERT INTO `tovar`(`id`, `name`, `model`, `price`):

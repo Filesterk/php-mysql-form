@@ -23,6 +23,9 @@ require('testfiles/navbar.php');  //require_once
 //include('testfiles/someform.php');  // @todo: Hide this form    
 // @todo: show me the form to add a new record to the `item` table
 ?>
+<?php
+require('practice-functions.php');  //require_once
+?>
 
 <form action="index.php" method="POST">
   <div class="form-group">
