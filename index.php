@@ -4,12 +4,11 @@ require_once 'db-connect.php'; // Тут ты зареквайрил все фу
 // значит они уже доступны к вызову
 
 // тут получим линк (только используй свои парвильные параметры)
+  $name = $_POST['name'];
+  $model = $_POST['model'];
+  $price = $_POST['price'];
   $dbLink = setup_db_connection('localhost', 'root', '', 'alex_sandbox');
   
-    $name = $_POST['name'];
-    $model = $_POST['model'];
-    $price = $_POST['price'];
-
   $allRecords = get_all_records($dbLink, 'item');
 // только поменяй имя таблицы, это очень рогато выглядит, пусть будет item или goods
 // теперь у тебя будет результат в виде $allRecords, с которым можно что-то делать
@@ -38,7 +37,7 @@ require('testfiles/navbar.php');  //require_once
 require('practice-functions.php');  //require_once
 ?>
 
-<form action="db-connect.php" method="POST">
+<form action="index.php" method="POST">
   <div class="form-group">
     <label>Name:</label>
     <input type="text" class="form-control" name="name" id="name">
