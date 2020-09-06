@@ -37,20 +37,23 @@ function setup_db_connection(string $host, string $user, string $password, strin
 
 function get_all_records(mysqli $link, string $tableName): array
 {
-    
     $tableName = 'item';
 
     if ($result = mysqli_query($link, "SELECT * FROM $tableName", MYSQLI_USE_RESULT)) {
-        if (!mysqli_query($link, "SET @a:='this will not work'")) {
-            printf("Ошибка: %s\n", mysqli_error($link));
-        }
+        
         mysqli_free_result($result);
     }
     
-    mysqli_close($link);
-    return $result;
-}
+    //mysqli_close($link);
+    //return $result;
 
+    var_dump($link); 
+
+//    foreach ($link as $value) {
+//      echo gettype($value), "\n";
+//   }
+}
+ 
     //$result = [$link];
      //Your code !
     //return $result;
