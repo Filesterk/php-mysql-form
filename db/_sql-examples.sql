@@ -1,1 +1,1 @@
-SELECT * FROM $tableName
+SELECT * FROM  item WHERE  `id`=3

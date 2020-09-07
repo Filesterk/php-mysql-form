@@ -51,7 +51,7 @@ function get_all_records(mysqli $link, string $tableName): array
  */
 function get_record_by_id(mysqli $link, int $recordId, string $tableName): array
 {
-        
+
     if ($result = mysqli_query($link, "SELECT * FROM $tableName WHERE $recordId")) {
         printf("Select single %d record.\n", mysqli_num_rows($result));
             mysqli_free_result($result);
@@ -70,28 +70,15 @@ function get_record_by_id(mysqli $link, int $recordId, string $tableName): array
  */
 function insert_new_record(array $recordData, string $tableName)
 {
-    $host = 'localhost';  
-    $user = 'root';    
-    $password = ''; 
-    $dbName = 'alex_sandbox';
-    $tableName = 'tovar';
-    //$recordData = (`id`, `name`, `model`, `price`);
-    $link = mysqli_connect($host, $user, $password, $dbName);
-    // Вот к примеру, я -- пхп. Я вообще не знаю, что такое INSERT, что такое INTO
-    //$recordData = INSERT INTO `tovar`(`id`, `name`, `model`, `price`):
-    //$tableName = (NULL, `$name`, `$model`, `$price`);
-    if (!$link) {
-        die("Connection failed: " . mysqli_connect_error());
-  }
+    $recordData = (`id`, `name`, `model`, `price`);
    
-  echo "Connected successfully";
-   
-  $sql = "INSERT INTO $recordData VALUES $tableName";
-    if (mysqli_query($link, $sql)) {
-            echo "New record created successfully";
-    } else {
-            echo "Error: " . $sql . "<br>" . mysqli_error($link);
-    }
-  mysqli_close($link);         
+    $sql = "INSERT INTO $recordData VALUES $tableName";
+        if (mysqli_query($link, $sql)) {
+                echo "New record created successfully";
+        } else {
+                echo "Error: " . $sql . "<br>" . mysqli_error($link);
+        }
+        
+    mysqli_close($link);         
 }
 
