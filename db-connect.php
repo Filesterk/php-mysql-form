@@ -43,26 +43,22 @@ function get_all_records(mysqli $link, string $tableName): array
 }
 
 /**
+ * @param mysqli $link
  * @param int $recordId
  * @param string $tableName
  * @return array
  * @todo: Write a function that will get single record from known table with known id
  */
-function get_record_by_id(int $recordId, string $tableName): array
+function get_record_by_id(mysqli $link, int $recordId, string $tableName): array
 {
-    $host = 'localhost';  
-    $user = 'root';    
-    $password = ''; 
-    $dbName = 'alex_sandbox';
-    $recordId = 3;
-    $tableName = 'tovar';
-
-    $link = mysqli_connect($host, $user, $password, $dbName);
-
     if ($result = mysqli_query($link, "SELECT * FROM $tableName WHERE $recordId")) {
         printf("Select single %d record.\n", mysqli_num_rows($result));
-    mysqli_free_result($result);
+        mysqli_free_result($result);
     }
+
+    $itemData = [];
+
+    return $itemData;
 }
 
 
