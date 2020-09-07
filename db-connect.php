@@ -50,6 +50,10 @@ function get_all_records(mysqli $link, string $tableName): array
  */
 function get_record_by_id(int $recordId, string $tableName): array
 {
+    $result = mysqli_query($link, "SELECT * FROM $tableName WHERE $recordId");
+    
+
+    /*
     $host = 'localhost';  
     $user = 'root';    
     $password = ''; 
@@ -62,7 +66,7 @@ function get_record_by_id(int $recordId, string $tableName): array
     if ($result = mysqli_query($link, "SELECT * FROM $tableName WHERE $recordId")) {
         printf("Select single %d record.\n", mysqli_num_rows($result));
     mysqli_free_result($result);
-    }
+    }*/
 }
 
 
