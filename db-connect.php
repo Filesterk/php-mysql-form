@@ -29,35 +29,18 @@ function setup_db_connection(string $host, string $user, string $password, strin
  * @return array
  * @todo: Write a function that will get all records from known table
  */
-    $host = 'localhost';  
-    $user = 'root';    
-    $password = ''; 
-    $dbName = 'alex_sandbox';
-    $link = mysqli_connect($host, $user, $password, $dbName);
-
 function get_all_records(mysqli $link, string $tableName): array
 {
-    $tableName = 'item';
+    $result = mysqli_query($link, "SELECT * FROM $tableName", MYSQLI_USE_RESULT);
 
-    if ($result = mysqli_query($link, "SELECT * FROM $tableName", MYSQLI_USE_RESULT)) {
-        
-        mysqli_free_result($result);
+    $items = [];
+
+    foreach (mysqli_fetch_all($result) as $row) {
+        $items[] = $row;
     }
-    
-    //mysqli_close($link);
-    //return $result;
 
-    var_dump($link); 
-
-//    foreach ($link as $value) {
-//      echo gettype($value), "\n";
-//   }
+    return $items;
 }
- 
-    //$result = [$link];
-     //Your code !
-    //return $result;
-
 
 /**
  * @param int $recordId
@@ -75,16 +58,12 @@ function get_record_by_id(int $recordId, string $tableName): array
     $tableName = 'tovar';
 
     $link = mysqli_connect($host, $user, $password, $dbName);
-    //$result = [$link];
 
     if ($result = mysqli_query($link, "SELECT * FROM $tableName WHERE $recordId")) {
         printf("Select single %d record.\n", mysqli_num_rows($result));
     mysqli_free_result($result);
     }
 }
-    //$result = [$link];
-    // Your code !
-    //return $result;  
 
 
 /**
