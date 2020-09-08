@@ -1,11 +1,26 @@
 <?php
 
-function areaCircle(float $r): float {
-   return pi() * (pow($r,2));
-}
+function f(int $i): int {
+   return $i;
+ }
+ f('1');
 
-$result = areaCircle(5);
-echo $result;
+
+// Принудительный режим
+// function sumOfInts(int ...$ints)
+// {
+//     return array_sum($ints);
+// }
+
+// var_dump(sumOfInts(2, '3', 4.1));
+
+
+// function areaCircle(float $r): float {
+//    return pi() * (pow($r,2));
+// }
+
+// $result = areaCircle(5);
+// echo $result;
 
 // $var = array(5, 10, 15);
 // function average($var) {

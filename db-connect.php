@@ -11,7 +11,7 @@
  */
 function setup_db_connection(string $host, string $user, string $password, string $dbName, ?int $port = null): mysqli
 {
-    $link = mysqli_connect($host, $user, $password, $dbName, $port);
+    $link = mysqli_connect('localhost', 'root', '', 'alex_sandbox', $port);
 
     if (!$link) {
         echo "Ошибка: Невозможно установить соединение с MySQL." . PHP_EOL;
@@ -49,6 +49,7 @@ function get_all_records(mysqli $link, string $tableName): array
  * @return array
  * @todo: Write a function that will get single record from known table with known id
  */
+
 function get_record_by_id(mysqli $link, int $recordId, string $tableName): array
 {
 
@@ -58,21 +59,24 @@ function get_record_by_id(mysqli $link, int $recordId, string $tableName): array
     }
 
     $itemData = [];
-    
-    while ($itemData = mysql_fetch_assoc($result) as $row) {
-        $itemData[] = $row;
-    }
 
+    while ($row = mysqli_fetch_assoc($result)) {
+        $itemData[] = $row;
+        echo $row["id"];
+        echo $row["name"];
+        echo $row["model"];
+        echo $row["price"];
+    }
+    
     return $itemData;
 }
-
 
 /**
  * @param array $recordData
  * @param string $tableName
  * @todo: Write a function to insert a new record in known table
  */
-function insert_new_record(array $recordData, string $tableName)
+/*function insert_new_record(array $recordData, string $tableName)
 {
     
     $recordData = (`id`, `name`, `model`, `price`);
@@ -85,5 +89,5 @@ function insert_new_record(array $recordData, string $tableName)
         }
         
     mysqli_close($link);         
-}
+}*/
 
