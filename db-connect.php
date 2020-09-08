@@ -58,6 +58,10 @@ function get_record_by_id(mysqli $link, int $recordId, string $tableName): array
     }
 
     $itemData = [];
+    
+    while ($itemData = mysql_fetch_assoc($result) as $row) {
+        $itemData[] = $row;
+    }
 
     return $itemData;
 }
@@ -70,6 +74,7 @@ function get_record_by_id(mysqli $link, int $recordId, string $tableName): array
  */
 function insert_new_record(array $recordData, string $tableName)
 {
+    
     $recordData = (`id`, `name`, `model`, `price`);
    
     $sql = "INSERT INTO $recordData VALUES $tableName";

@@ -2,17 +2,21 @@
 
 require_once 'db-connect.php'; // Тут ты зареквайрил все функции из db-connect.php
 // значит они уже доступны к вызову
-
 // тут получим линк (только используй свои парвильные параметры)
-
 $dbLink = setup_db_connection('mysql', 'alex', 'alex', 'alex_sandbox');
   
 $allItems = get_all_records($dbLink, 'item');
 var_dump($allItems);
-
 // только поменяй имя таблицы, это очень рогато выглядит, пусть будет item или goods
 // теперь у тебя будет результат в виде $allRecords, с которым можно что-то делать
 // например вывести красиво в табличном виде, что я и пытаюсь от тебя добиться
+?>
+
+<?php
+  require_once 'db-connect.php';
+  $dbLink = setup_db_connection('mysql', 'alex', 'alex', 'alex_sandbox');
+  $idItems = get_record_by_id($dbLink, 'item');
+  var_dump($idItems);
 ?>
 
 <!DOCTYPE html>
