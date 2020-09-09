@@ -13,10 +13,11 @@ var_dump($allItems);
 ?>
 
 <?php
-  // require_once 'db-connect.php';
-  // $dbLink = setup_db_connection('mysql', 'alex', 'alex', 'alex_sandbox');
-  // $idItems = get_record_by_id($dbLink, 'item');
-  // var_dump($idItems);
+   require_once 'db-connect.php';
+   $dbLink = setup_db_connection('mysql', 'alex', 'alex', 'alex_sandbox');
+   $recordId = 3;  
+   $idItems = get_record_by_id($dbLink, $recordId, 'item');  
+   var_dump($idItems);
 ?>
 
 <!DOCTYPE html>
