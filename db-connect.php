@@ -55,15 +55,15 @@ function get_record_by_id(mysqli $link, int $recordId, string $tableName): array
 
     if ($result = mysqli_query($link, "SELECT * FROM $tableName WHERE id = '$recordId'")) {
         printf("Select single %d record.\n", mysqli_num_rows($result));
-            mysqli_free_result($result);
+            mysqli_fetch_array($result);        //mysql_free_result($result);
     }
     
     $itemData = [];
 
     while ($row = mysqli_fetch_assoc($result)) {
-        $itemData[] = $row;        
+        $itemData[] = $row;       
     }
-    
+   
     return $itemData;
 }
 
