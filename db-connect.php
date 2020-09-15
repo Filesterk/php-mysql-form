@@ -11,7 +11,7 @@
  */
 function setup_db_connection(string $host, string $user, string $password, string $dbName, ?int $port = null): mysqli
 {
-    $link = mysqli_connect('localhost', 'root', '', 'alex_sandbox', $port);
+    $link = mysqli_connect($host, $user, $password, $dbName, $port);
 
     if (!$link) {
         echo "Ошибка: Невозможно установить соединение с MySQL." . PHP_EOL;
@@ -55,7 +55,7 @@ function get_record_by_id(mysqli $link, int $recordId, string $tableName): array
 
     if ($result = mysqli_query($link, "SELECT * FROM $tableName WHERE id = '$recordId'")) {
         printf("Select single %d record.\n", mysqli_num_rows($result));
-            mysqli_fetch_array($result);        //mysql_free_result($result);
+            mysqli_fetch_array($result);
     }
     
     $itemData = [];

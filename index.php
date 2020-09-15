@@ -1,10 +1,10 @@
 <?php
+require 'config.php';
+$conf = get_configs();
+require_once 'db-connect.php';
 
-require_once 'db-connect.php'; // Тут ты зареквайрил все функции из db-connect.php
-// значит они уже доступны к вызову
-// тут получим линк (только используй свои парвильные параметры)
-$dbLink = setup_db_connection('mysql', 'alex', 'alex', 'alex_sandbox');
-  
+$dbLink = setup_db_connection($conf->db->host, $conf->db->user, $conf->db->password, $conf->db->dbName);
+
 $allItems = get_all_records($dbLink, 'item');
 var_dump($allItems);
 // только поменяй имя таблицы, это очень рогато выглядит, пусть будет item или goods
@@ -14,7 +14,7 @@ var_dump($allItems);
 
 <?php
    require_once 'db-connect.php';
-   $dbLink = setup_db_connection('mysql', 'alex', 'alex', 'alex_sandbox');
+
    $recordId = 3;  
    $idItems = get_record_by_id($dbLink, $recordId, 'item');  
    var_dump($idItems);
