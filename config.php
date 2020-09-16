@@ -2,7 +2,8 @@
 
 class Conf
 {
-    public DbConf $db;
+    /** @var DbConf  */
+    public $db;
 
     public function __construct(DbConf $dbConf)
     {
