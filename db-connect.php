@@ -72,9 +72,30 @@ function get_record_by_id(mysqli $link, int $recordId, string $tableName): array
  * @param string $tableName
  * @todo: Write a function to insert a new record in known table
  */
-/*function insert_new_record(array $recordData, string $tableName)
-{
+function insert_new_record(array $recordData, string $tableName)  //write mysqli $link
+{   
+    $link = mysqli_connect($host, $user, $password, $dbName, $port);
+
+    $result = "Insert into $recordData values $tableName";
+    $insertData = $link->query($result);
     
+    if (!$insertData) {
+        return false;
+      } else {
+       return $link->insert_id; 
+   }
+}
+/*{
+    if ($result = mysqli_query($link, "INSERT INTO $recordData values $tableName")) {
+        printf("Идентификатор последней вставленной записи %d\n", mysql_insert_id($result));
+        mysqli_fetch_array($result);
+    }
+    $insert = [];
+    while ($arr = mysqli_fetch_assoc($result)) {
+        $insert[] = $arr;       
+    }
+    return $insert;
+    =====================    
     $recordData = (`id`, `name`, `model`, `price`);
    
     $sql = "INSERT INTO $recordData VALUES $tableName";

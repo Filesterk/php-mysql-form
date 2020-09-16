@@ -6,18 +6,26 @@ require_once 'db-connect.php';
 $dbLink = setup_db_connection($conf->db->host, $conf->db->user, $conf->db->password, $conf->db->dbName);
 
 $allItems = get_all_records($dbLink, 'item');
+
 var_dump($allItems);
-// только поменяй имя таблицы, это очень рогато выглядит, пусть будет item или goods
-// теперь у тебя будет результат в виде $allRecords, с которым можно что-то делать
-// например вывести красиво в табличном виде, что я и пытаюсь от тебя добиться
+
+foreach($allItems as $attribute => $data) {
+  echo "{$attribute}: {$data}<br />";
+}
 ?>
 
 <?php
    require_once 'db-connect.php';
-
-   $recordId = 3;  
+   $recordId = 3; 
    $idItems = get_record_by_id($dbLink, $recordId, 'item');  
    var_dump($idItems);
+?>
+
+<?php
+   require_once 'db-connect.php';    
+   $recordData = array('id', 'name'=>$_POST['name'], 'model'=>$_POST['model'], 'price'=>$_POST['price']);
+   $insertItems = insert_new_record($recordData, 'item');  
+   var_dump($insertItems);
 ?>
 
 <!DOCTYPE html>
