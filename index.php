@@ -15,14 +15,12 @@ foreach($allItems as $attribute => $data) {
 ?>
 
 <?php
-   require_once 'db-connect.php';
    $recordId = 3; 
    $idItems = get_record_by_id($dbLink, $recordId, 'item');  
    var_dump($idItems);
 ?>
 
 <?php
-   require_once 'db-connect.php';    
    $recordData = array('id', 'name'=>$_POST['name'], 'model'=>$_POST['model'], 'price'=>$_POST['price']);
    $insertItems = insert_new_record($recordData, 'item');  
    var_dump($insertItems);
