@@ -68,14 +68,14 @@ function get_record_by_id(mysqli $link, int $recordId, string $tableName): array
 }
 
 /**
+ * @param mysqli $link
  * @param array $recordData
  * @param string $tableName
+ * @return false|mixed
  * @todo: Write a function to insert a new record in known table
  */
-function insert_new_record(array $recordData, string $tableName)  //write mysqli $link
-{   
-    $link = mysqli_connect($host, $user, $password, $dbName, $port);
-
+function insert_new_record(mysqli $link, array $recordData, string $tableName)  //write mysqli $link
+{
     $result = "Insert into $recordData values $tableName";
     $insertData = $link->query($result);
     
