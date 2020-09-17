@@ -2,8 +2,9 @@
 
 class Conf
 {
-    public DbConf $db;
-
+    //public DbConf $db;
+    /** @var DbConf  */
+    public $db;
     public function __construct(DbConf $dbConf)
     {
         $this->db = $dbConf;
@@ -16,6 +17,7 @@ class DbConf
     public string $dbName;
     public string $user;
     public string $password;
+    
 
     public function __construct(string $host, string $dbName, string $user, string $password)
     {
@@ -31,6 +33,9 @@ class DbConf
  */
 function get_configs(): Conf
 {
-    $dbConf = new DbConf('mysql', 'alex_sandbox', 'alex', 'alex');
+    $dbConf = new DbConf($host, $dbName, $user, $password);      
+    //$dbConf = new DbConf('mysql', 'alex_sandbox', 'alex', 'alex'); 
+    //$dbConf = new DbConf('localhost', 'alex_sandbox', 'root', '');
+    
     return new Conf($dbConf);
 }
