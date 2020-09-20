@@ -24,6 +24,15 @@ foreach($allItems as $attribute => $data) {
    $recordData = array('id', 'name'=>$_POST['name'], 'model'=>$_POST['model'], 'price'=>$_POST['price']);
    $insertItems = insert_new_record($dbLink, $recordData, 'item');  
    var_dump($insertItems);
+
+   //insert_new_record($insertData);
+   //insert_new_record($dbLink, $recordData, 'item');
+
+   //printf ("New Record has id %d.\n", mysqli_insert_id($insertItems));
+
+  //  foreach($insertItems as $key => $index) {
+  //   echo "{$key}: {$index}<br />";
+  // }
 ?>
 
 <!DOCTYPE html>

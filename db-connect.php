@@ -77,6 +77,7 @@ function get_record_by_id(mysqli $link, int $recordId, string $tableName): array
 function insert_new_record(mysqli $link, array $recordData, string $tableName)  //write mysqli $link
 {
     $result = "Insert into $recordData values $tableName";
+    //$result = "INSERT INTO `item`(`id`, `name`, `model`, `price`) VALUES ('name'=>$_POST['name'], 'model'=>$_POST['model'], 'price'=>$_POST['price'])";
     $insertData = $link->query($result);
     
     if (!$insertData) {
@@ -85,6 +86,7 @@ function insert_new_record(mysqli $link, array $recordData, string $tableName)  
        return $link->insert_id; 
    }
 }
+
 /*{
     if ($result = mysqli_query($link, "INSERT INTO $recordData values $tableName")) {
         printf("Идентификатор последней вставленной записи %d\n", mysql_insert_id($result));
