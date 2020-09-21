@@ -21,6 +21,13 @@ foreach($allItems as $attribute => $data) {
 ?>
 
 <?php
+    $recordData = array(
+    'name'=>$_POST['name'],
+    'model'=>$_POST['model'],
+    'price'=>$_POST['price']);
+    $keys = implode(', ', array_keys($recordData));
+    $values = implode(', ', array_values($recordData));
+
    //$recordData = array('id', 'name'=>$_POST['name'], 'model'=>$_POST['model'], 'price'=>$_POST['price']);
    //$recordData = array('id', 'item'=>$_POST['name'], 'item'=>$_POST['model'], 'item'=>$_POST['price']);
    //$recordData = array('id', $_POST['name']=>'name', $_POST['model']=>'model', $_POST['price']=>'price');
