@@ -21,12 +21,17 @@ foreach($allItems as $attribute => $data) {
 ?>
 
 <?php
-   $recordData = array('id', 'name'=>$_POST['name'], 'model'=>$_POST['model'], 'price'=>$_POST['price']);
+   //$recordData = array('id', 'name'=>$_POST['name'], 'model'=>$_POST['model'], 'price'=>$_POST['price']);
+   //$recordData = array('id', 'item'=>$_POST['name'], 'item'=>$_POST['model'], 'item'=>$_POST['price']);
+   //$recordData = array('id', $_POST['name']=>'name', $_POST['model']=>'model', $_POST['price']=>'price');
+   //$recordData = array('id', $_POST['name']=>'item', $_POST['model']=>'item', $_POST['price']=>'item');
+   //$recordData = array('id'=>NULL, 'name'=>$_POST['name'], 'model'=>$_POST['model'], 'price'=>$_POST['price']);
+
    $insertItems = insert_new_record($dbLink, $recordData, 'item');  
    var_dump($insertItems);
 
    //insert_new_record($insertData);
-   //insert_new_record($dbLink, $recordData, 'item');
+   insert_new_record($dbLink, $recordData, 'item');
 
    //printf ("New Record has id %d.\n", mysqli_insert_id($insertItems));
 
