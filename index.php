@@ -20,8 +20,12 @@ foreach($allItems as $attribute => $data) {
    var_dump($idItems);
 ?>
 
-<?php
 
+
+<?php
+    $name = $_POST['name'];
+    $model = $_POST['model'];
+    $price = $_POST['price'];
     /*$recordData = array(
     'name'=>$_POST['name'],
     'model'=>$_POST['model'],
@@ -29,15 +33,19 @@ foreach($allItems as $attribute => $data) {
     $keys = implode(', ', array_keys($recordData));
     $values = implode(', ', array_values($recordData));*/
 
-   $recordData = array('id', 'name'=>$_POST['name'], 'model'=>$_POST['model'], 'price'=>$_POST['price']);
+    $recordData = array(`name`=>'$name', `model`=>'$model', `price`=>'$price');
+    //$recordData = `item`(`name`, `model`, `price`);
+    //$recordData = array(`name`=>$_POST['name'], `model`=>$_POST['model'], `price`=>$_POST['price']);
+   //$recordData = array('name'=>$_POST['name'], 'model'=>$_POST['model'], 'price'=>$_POST['price']);
    //$recordData = array('id', 'item'=>$_POST['name'], 'item'=>$_POST['model'], 'item'=>$_POST['price']);
    //$recordData = array('id', $_POST['name']=>'name', $_POST['model']=>'model', $_POST['price']=>'price');
    //$recordData = array('id', $_POST['name']=>'item', $_POST['model']=>'item', $_POST['price']=>'item');
    //$recordData = array('id'=>NULL, 'name'=>$_POST['name'], 'model'=>$_POST['model'], 'price'=>$_POST['price']);
-
+   //$tableName = ($_POST['name'], $_POST['model'], $_POST['price']);
+   
    $insertItems = insert_new_record($dbLink, $recordData, 'item');  
    var_dump($insertItems);
-   var_dump($recordData);
+   //var_dump($recordData);
    //insert_new_record($insertData);
    insert_new_record($dbLink, $recordData, 'item');
 
@@ -73,15 +81,15 @@ require('practice-functions.php');  //require_once
 <form action="index.php" method="POST">
   <div class="form-group">
     <label>Name:</label>
-    <input type="text" class="form-control" name="name" id="name">
+    <input type="text" class="form-control" name="name">
   </div>
   <div class="form-group">
     <label>Model:</label>
-    <input type="text" class="form-control" name="model" id="model">
+    <input type="text" class="form-control" name="model">
   </div>
   <div class="form-group">
     <label>Price:</label>
-    <input type="number" class="form-control" name="price" id="price">
+    <input type="number" class="form-control" name="price">
   </div>
   <button type="submit" name="submit" class="btn btn-primary">Submit</button>
 </form>

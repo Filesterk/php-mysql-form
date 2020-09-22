@@ -74,12 +74,12 @@ function get_record_by_id(mysqli $link, int $recordId, string $tableName): array
  * @return false|mixed
  * @todo: Write a function to insert a new record in known table
  */
-function insert_new_record(mysqli $link, array $recordData, string $tableName)  //write mysqli $link
+function insert_new_record(mysqli $link, array $recordData, string $tableName)  //array $recordData write mysqli $link
 {
     //$recordData = array('id', 'name'=>$_POST['name'], 'model'=>$_POST['model'], 'price'=>$_POST['price']);
     //$recordData = array('id', $_POST['name']=>'name', $_POST['model']=>'model', $_POST['price']=>'price');
     
-   $insertString = "Insert into $recordData values $tableName";
+   $insertString = "Insert into $recordData values $tableName";     //$tableName
     //$insertString = "INSERT INTO `item`(`id`, `name`, `model`, `price`) VALUES ('name'=>$_POST['name'], 'model'=>$_POST['model'], 'price'=>$_POST['price'])";
     $insertData = $link->query($insertString);
     
