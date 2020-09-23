@@ -78,9 +78,11 @@ function insert_new_record(mysqli $link, array $recordData, string $tableName)  
 {
     //$recordData = array('id', 'name'=>$_POST['name'], 'model'=>$_POST['model'], 'price'=>$_POST['price']);
     //$recordData = array('id', $_POST['name']=>'name', $_POST['model']=>'model', $_POST['price']=>'price');
-    
-   $insertString = "Insert into $recordData values $tableName";     //$tableName
+   
+   //$insertString = "Insert into $recordData values $tableName";     //$tableName
     //$insertString = "INSERT INTO `item`(`id`, `name`, `model`, `price`) VALUES ('name'=>$_POST['name'], 'model'=>$_POST['model'], 'price'=>$_POST['price'])";
+    $insertString = "INSERT INTO `item`(`name`, `model`, `price`) VALUES ('".$name."', '".$model."', '".$price."')";
+    
     $insertData = $link->query($insertString);
     
     if (!$insertData) {

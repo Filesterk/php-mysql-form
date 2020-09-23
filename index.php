@@ -32,8 +32,14 @@ foreach($allItems as $attribute => $data) {
     'price'=>$_POST['price']);
     $keys = implode(', ', array_keys($recordData));
     $values = implode(', ', array_values($recordData));*/
+    $recordData = array(
+      'name'=>$name,
+      'model'=>$model,
+      'price'=>$price);
+      $keys = implode(', ', array($recordData));
+      $values = implode(', ', array_values($recordData));
 
-    $recordData = array(`name`=>'$name', `model`=>'$model', `price`=>'$price');
+    //$recordData = array(`name`=>'$name', `model`=>'$model', `price`=>'$price');
     //$recordData = `item`(`name`, `model`, `price`);
     //$recordData = array(`name`=>$_POST['name'], `model`=>$_POST['model'], `price`=>$_POST['price']);
    //$recordData = array('name'=>$_POST['name'], 'model'=>$_POST['model'], 'price'=>$_POST['price']);
