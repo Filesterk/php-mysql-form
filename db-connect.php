@@ -52,7 +52,6 @@ function get_all_records(mysqli $link, string $tableName): array
 
 function get_record_by_id(mysqli $link, int $recordId, string $tableName): array
 {
-
     if ($result = mysqli_query($link, "SELECT * FROM $tableName WHERE id = '$recordId'")) {
         printf("Select single %d record.\n", mysqli_num_rows($result));
             mysqli_fetch_array($result);
@@ -74,44 +73,33 @@ function get_record_by_id(mysqli $link, int $recordId, string $tableName): array
  * @return false|mixed
  * @todo: Write a function to insert a new record in known table
  */
-function insert_new_record(mysqli $link, array $recordData, string $tableName)  //array $recordData write mysqli $link
+
+ function insert_new_record(mysqli $link, array $recordData, string $tableName)  
 {
-    //$recordData = array('id', 'name'=>$_POST['name'], 'model'=>$_POST['model'], 'price'=>$_POST['price']);
-    //$recordData = array('id', $_POST['name']=>'name', $_POST['model']=>'model', $_POST['price']=>'price');
-   
-   //$insertString = "Insert into $recordData values $tableName";     //$tableName
-    //$insertString = "INSERT INTO `item`(`id`, `name`, `model`, `price`) VALUES ('name'=>$_POST['name'], 'model'=>$_POST['model'], 'price'=>$_POST['price'])";
-    $insertString = "INSERT INTO `item`(`name`, `model`, `price`) VALUES ('".$name."', '".$model."', '".$price."')";
-    
+    $insertString = "INSERT INTO " . $tableName . "(name, model, price) 
+    VALUES ('" . $recordData[0] . "', '" . $recordData[1] . "', '" . $recordData[2] . "')";
     $insertData = $link->query($insertString);
     
     if (!$insertData) {
+        echo "<br>" . $insertString . "<br><br>";
+        echo 'Error: ' . $link->error . '\n';
         return false;
       } else {
        return $link->insert_id; 
    }
 }
 
-/*{
-    if ($result = mysqli_query($link, "INSERT INTO $recordData values $tableName")) {
-        printf("Идентификатор последней вставленной записи %d\n", mysql_insert_id($result));
-        mysqli_fetch_array($result);
-    }
-    $insert = [];
-    while ($arr = mysqli_fetch_assoc($result)) {
-        $insert[] = $arr;       
-    }
-    return $insert;
-    =====================    
-    $recordData = (`id`, `name`, `model`, `price`);
-   
-    $sql = "INSERT INTO $recordData VALUES $tableName";
-        if (mysqli_query($link, $sql)) {
-                echo "New record created successfully";
-        } else {
-                echo "Error: " . $sql . "<br>" . mysqli_error($link);
-        }
-        
-    mysqli_close($link);         
-}*/
+// function insert_new_record(mysqli $link, array $recordData, string $tableName)  
+// {
+//     $insertString = "INSERT INTO $tableName('name', 'model', 'price') VALUES 
+//     ('{$recordData['name']}', '{$recordData['model']}', '{$recordData['price']}')";    
+//     $insertData = $link->query($insertString);
+    
+//     if (!$insertData) {
+//         return false;
+//       } else {
+//        return $link->insert_id; 
+//    }
+// }
+
 

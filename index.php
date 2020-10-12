@@ -1,18 +1,53 @@
 <?php
-require 'config.php';
-$conf = get_configs();
+ require 'config.php';
+ $conf = get_configs();
 require_once 'db-connect.php';
-
-$dbLink = setup_db_connection($conf->db->host, $conf->db->user, $conf->db->password, $conf->db->dbName);
-
+// require_once 'select-connect.php';
+// require_once 'select-id-connect.php';
+// require_once 'insert-connect.php';
+ $dbLink = setup_db_connection($conf->db->host, $conf->db->user, $conf->db->password, $conf->db->dbName);
 $allItems = get_all_records($dbLink, 'item');
 
 var_dump($allItems);
-
 foreach($allItems as $attribute => $data) {
   echo "{$attribute}: {$data}<br />";
 }
 ?>
+
+<?php       
+$array = array_chunk($allItems, 4);
+?>
+ 
+<table class="city_list">
+<thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Model</th>
+          <th>Price</th>
+        </tr>
+</thead>
+<tbody>
+	<?php foreach ($allItems as $items): ?>
+	<tr>
+		<?php foreach ($items as $row): ?>
+		<td><?php echo $row; ?></td>
+		<?php endforeach; ?>
+	</tr>
+	<?php endforeach; ?>
+  </tbody>
+</table>
+ 
+<style>
+.city_list {
+	width: 100%;
+}
+.city_list td, th {
+	width: 25%;
+	border: 1px solid #ddd;
+	padding: 7px 10px;
+}
+</style>
 
 <?php
    $recordId = 3; 
@@ -20,46 +55,33 @@ foreach($allItems as $attribute => $data) {
    var_dump($idItems);
 ?>
 
+<?php   
+    // require 'config.php';
+    // $conf = get_configs(); 
+    // require_once 'insert-connect.php';
+    // $dbLink = setup_db_connection($conf->db->host, $conf->db->user, $conf->db->password, $conf->db->dbName);       
+    $recordData = array($_POST['name'], $_POST['model'], $_POST['price']); 
+    // if (!empty($_POST['name'])) {
+    //     echo 'Поле заполнено'.'<br>';
+    //     $name = $_POST['name'];
+    //     $model = $_POST['model'];
+    //     $price = $_POST['price'];
+    // } else {
+    // echo 'Поле не заполнено'.'<br>';
+    // }
 
-
-<?php
-    $name = $_POST['name'];
-    $model = $_POST['model'];
-    $price = $_POST['price'];
-    /*$recordData = array(
-    'name'=>$_POST['name'],
-    'model'=>$_POST['model'],
-    'price'=>$_POST['price']);
-    $keys = implode(', ', array_keys($recordData));
-    $values = implode(', ', array_values($recordData));*/
-    $recordData = array(
-      'name'=>$name,
-      'model'=>$model,
-      'price'=>$price);
-      $keys = implode(', ', array($recordData));
-      $values = implode(', ', array_values($recordData));
-
-    //$recordData = array(`name`=>'$name', `model`=>'$model', `price`=>'$price');
-    //$recordData = `item`(`name`, `model`, `price`);
-    //$recordData = array(`name`=>$_POST['name'], `model`=>$_POST['model'], `price`=>$_POST['price']);
-   //$recordData = array('name'=>$_POST['name'], 'model'=>$_POST['model'], 'price'=>$_POST['price']);
-   //$recordData = array('id', 'item'=>$_POST['name'], 'item'=>$_POST['model'], 'item'=>$_POST['price']);
-   //$recordData = array('id', $_POST['name']=>'name', $_POST['model']=>'model', $_POST['price']=>'price');
-   //$recordData = array('id', $_POST['name']=>'item', $_POST['model']=>'item', $_POST['price']=>'item');
-   //$recordData = array('id'=>NULL, 'name'=>$_POST['name'], 'model'=>$_POST['model'], 'price'=>$_POST['price']);
-   //$tableName = ($_POST['name'], $_POST['model'], $_POST['price']);
-   
-   $insertItems = insert_new_record($dbLink, $recordData, 'item');  
-   var_dump($insertItems);
-   //var_dump($recordData);
-   //insert_new_record($insertData);
-   insert_new_record($dbLink, $recordData, 'item');
-
-   //printf ("New Record has id %d.\n", mysqli_insert_id($insertItems));
-
-  //  foreach($insertItems as $key => $index) {
-  //   echo "{$key}: {$index}<br />";
-  // }
+if (empty($_POST['name'])) {
+  echo 'Поле не заполнено'.'<br>';
+} else {
+  echo 'Поле было заполнено'.'<br>';
+  $name = $_POST['name'];
+  $model = $_POST['model'];
+  $price = $_POST['price'];
+}
+          
+   $insertItemId = insert_new_record($dbLink, $recordData, 'item');  
+   var_dump($insertItemId); 
+   var_dump($_POST);  
 ?>
 
 <!DOCTYPE html>
@@ -81,7 +103,7 @@ require('testfiles/navbar.php');  //require_once
 // @todo: show me the form to add a new record to the `item` table
 ?>
 <?php
-require('practice-functions.php');  //require_once
+//require('practice-functions.php');  //require_once
 ?>
 
 <form action="index.php" method="POST">

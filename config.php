@@ -16,8 +16,7 @@ class DbConf
     public $host;        //public string $host;
     public $dbName;      //public string $dbName;
     public $user;        //public string $user;
-    public $password;    //public string $password;
-    
+    public $password;    //public string $password;    
 
     public function __construct(string $host, string $dbName, string $user, string $password)
     {
@@ -33,7 +32,6 @@ class DbConf
  */
 function get_configs(): Conf
 {
-    $dbConf = new DbConf('localhost', 'alex_sandbox', 'root', '');
-    
+    $dbConf = new DbConf('localhost', 'alex_sandbox', 'root', '');    
     return new Conf($dbConf);
 }
