@@ -80,7 +80,9 @@ if (empty($_POST['name'])) {
 }
           
    $insertItemId = insert_new_record($dbLink, $recordData, 'item');  
+   $insertItemId = insert_new_record($dbLink, $recordData, 'manufacturer'); 
    var_dump($insertItemId); 
+   //var_dump($insertItemId1);
    var_dump($_POST);  
 ?>
 
@@ -129,3 +131,4 @@ require('testfiles/navbar.php');  //require_once
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 </body>
 </html>
+
