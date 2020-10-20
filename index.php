@@ -80,9 +80,23 @@ if (empty($_POST['name'])) {
 }
           
    $insertItemId = insert_new_record($dbLink, $recordData, 'item');  
+   //$insertItemId2 = insert_new_record($dbLink, $recordData, 'manufacturer'); 
+   var_dump($insertItemId); 
+   //var_dump($insertItemId2);
+   var_dump($_POST);  
+?>
+
+<?php   
+    $recordData = array($_POST['name']); 
+if (empty($_POST['name'])) {
+  echo 'Поле не заполнено'.'<br>';
+} else {
+  echo 'Поле было заполнено'.'<br>';
+  $name = $_POST['name'];
+}
+          
    $insertItemId = insert_new_record($dbLink, $recordData, 'manufacturer'); 
    var_dump($insertItemId); 
-   //var_dump($insertItemId1);
    var_dump($_POST);  
 ?>
 
@@ -124,6 +138,18 @@ require('testfiles/navbar.php');  //require_once
   <button type="submit" name="submit" class="btn btn-primary">Submit</button>
 </form>
 
+</div>
+
+<br>
+<br>
+<div class="container" style="background-color:#d6d6d6; padding-bottom: 20px; margin-bottom: 40px;">
+<form action="index.php" method="POST">
+  <div class="form-group">
+    <label>Name:</label>
+    <input type="text" class="form-control" name="name">
+  </div>
+  <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+</form>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
