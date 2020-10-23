@@ -55,20 +55,8 @@ $array = array_chunk($allItems, 4);
    var_dump($idItems);
 ?>
 
-<?php   
-    // require 'config.php';
-    // $conf = get_configs(); 
-    // require_once 'insert-connect.php';
-    // $dbLink = setup_db_connection($conf->db->host, $conf->db->user, $conf->db->password, $conf->db->dbName);       
-    $recordData = array($_POST['name'], $_POST['model'], $_POST['price']); 
-    // if (!empty($_POST['name'])) {
-    //     echo 'Поле заполнено'.'<br>';
-    //     $name = $_POST['name'];
-    //     $model = $_POST['model'];
-    //     $price = $_POST['price'];
-    // } else {
-    // echo 'Поле не заполнено'.'<br>';
-    // }
+<?php       
+    $recordData = array($_POST['name'], $_POST['model'], $_POST['price']);
 
 if (empty($_POST['name'])) {
   echo 'Поле не заполнено'.'<br>';
@@ -80,9 +68,7 @@ if (empty($_POST['name'])) {
 }
           
    $insertItemId = insert_new_record($dbLink, $recordData, 'item');  
-   //$insertItemId2 = insert_new_record($dbLink, $recordData, 'manufacturer'); 
    var_dump($insertItemId); 
-   //var_dump($insertItemId2);
    var_dump($_POST);  
 ?>
 

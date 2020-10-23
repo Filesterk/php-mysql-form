@@ -78,12 +78,8 @@ function get_record_by_id(mysqli $link, int $recordId, string $tableName): array
 {
     $insertString = "INSERT INTO " . $tableName . "(name, model, price) 
     VALUES ('" . $recordData[0] . "', '" . $recordData[1] . "', '" . $recordData[2] . "')";
-
-    //$insertString = "INSERT INTO " . 'manufacturer' . "(name) 
-    //VALUES ('" . $recordData[0] . "')";
     
     $insertData = $link->query($insertString);
-    //$insertData2 = $link->query($insertString2);
     if (!$insertData) {
         echo "<br>" . $insertString . "<br><br>";
         echo 'Error: ' . $link->error . '\n';
@@ -93,17 +89,5 @@ function get_record_by_id(mysqli $link, int $recordId, string $tableName): array
    }
 }
 
-// function insert_new_record(mysqli $link, array $recordData, string $tableName)  
-// {
-//     $insertString = "INSERT INTO $tableName('name', 'model', 'price') VALUES 
-//     ('{$recordData['name']}', '{$recordData['model']}', '{$recordData['price']}')";    
-//     $insertData = $link->query($insertString);
-    
-//     if (!$insertData) {
-//         return false;
-//       } else {
-//        return $link->insert_id; 
-//    }
-// }
 
 
