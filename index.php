@@ -69,7 +69,7 @@ if (empty($_POST['name'])) {
           
    $insertItemId = insert_new_record($dbLink, $recordData, 'item');  
    var_dump($insertItemId); 
-   var_dump($_POST);  
+   var_dump($_POST); 
 ?>
 
 <?php   

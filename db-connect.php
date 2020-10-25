@@ -78,7 +78,7 @@ function get_record_by_id(mysqli $link, int $recordId, string $tableName): array
 {
     $insertString = "INSERT INTO " . $tableName . "(name, model, price) 
     VALUES ('" . $recordData[0] . "', '" . $recordData[1] . "', '" . $recordData[2] . "')";
-    
+   
     $insertData = $link->query($insertString);
     if (!$insertData) {
         echo "<br>" . $insertString . "<br><br>";
