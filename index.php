@@ -2,9 +2,6 @@
  require 'config.php';
  $conf = get_configs();
 require_once 'db-connect.php';
-// require_once 'select-connect.php';
-// require_once 'select-id-connect.php';
-// require_once 'insert-connect.php';
  $dbLink = setup_db_connection($conf->db->host, $conf->db->user, $conf->db->password, $conf->db->dbName);
 $allItems = get_all_records($dbLink, 'item');
 
@@ -73,12 +70,12 @@ if (empty($_POST['name'])) {
 ?>
 
 <?php   
-    $recordData = array($_POST['name']); 
-if (empty($_POST['name'])) {
+    $recordData = array($_POST['brand']); 
+if (empty($_POST['brand'])) {
   echo 'Поле не заполнено'.'<br>';
 } else {
   echo 'Поле было заполнено'.'<br>';
-  $name = $_POST['name'];
+  $name = $_POST['brand'];
 }
           
    $insertItemId = insert_new_record($dbLink, $recordData, 'manufacturer'); 
@@ -98,14 +95,7 @@ if (empty($_POST['name'])) {
 
 <div class="container" style="background-color:#d6d6d6; padding-bottom: 20px;">
 <?php
-require('testfiles/navbar.php');  //require_once
-?>
-<?php
-//include('testfiles/someform.php');  // @todo: Hide this form    
-// @todo: show me the form to add a new record to the `item` table
-?>
-<?php
-//require('practice-functions.php');  //require_once
+require('navbar.php'); 
 ?>
 
 <form action="index.php" method="POST">
@@ -123,16 +113,16 @@ require('testfiles/navbar.php');  //require_once
   </div>
   <button type="submit" name="submit" class="btn btn-primary">Submit</button>
 </form>
-
 </div>
 
 <br>
 <br>
+
 <div class="container" style="background-color:#d6d6d6; padding-bottom: 20px; margin-bottom: 40px;">
 <form action="index.php" method="POST">
   <div class="form-group">
     <label>Name:</label>
-    <input type="text" class="form-control" name="name">
+    <input type="text" class="form-control" name="brand">
   </div>
   <button type="submit" name="submit" class="btn btn-primary">Submit</button>
 </form>

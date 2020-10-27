@@ -78,10 +78,15 @@ function get_record_by_id(mysqli $link, int $recordId, string $tableName): array
 {
     $insertString = "INSERT INTO " . $tableName . "(name, model, price) 
     VALUES ('" . $recordData[0] . "', '" . $recordData[1] . "', '" . $recordData[2] . "')";
+
+    $insertString1 = "INSERT INTO " . $tableName . "(brand) VALUES ('" . $recordData[0] . "')";
    
     $insertData = $link->query($insertString);
-    if (!$insertData) {
+    $insertData1 = $link->query($insertString1);
+
+    if (!$insertData || !$insertData1) {
         echo "<br>" . $insertString . "<br><br>";
+        echo "<br>" . $insertString1 . "<br><br>";
         echo 'Error: ' . $link->error . '\n';
         return false;
       } else {
