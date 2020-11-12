@@ -76,22 +76,59 @@ function get_record_by_id(mysqli $link, int $recordId, string $tableName): array
 
  function insert_new_record(mysqli $link, array $recordData, string $tableName)  
 {
-    $insertString = "INSERT INTO " . $tableName . "(name, model, price) 
-    VALUES ('" . $recordData[0] . "', '" . $recordData[1] . "', '" . $recordData[2] . "')";
 
-    $insertString1 = "INSERT INTO " . $tableName . "(brand) VALUES ('" . $recordData[0] . "')";
+    $pairs = array();
+
+foreach($recordData as $key => $value){
+        $pairs[] = '('.intval($key).','.intval($value).')';
+     }
    
-    $insertData = $link->query($insertString);
-    $insertData1 = $link->query($insertString1);
+     $insertString = 'INSERT INTO '. $tableName. '(name, model, price, brand) VALUES '.implode(',', $pairs);
+   
 
-    if (!$insertData || !$insertData1) {
+    // foreach($recordData as $k => $v){
+    //     $col[] = sanitize($k);
+    //     $val[] = "'".sanitize($v)."'";
+    //  }
+   
+    //  $insertString = "INSERT INTO ".sanitize($tableName)." ('.implode(', ', $col).') VALUES ('.implode(', ', $val).')" ;
+   
+
+
+    // $insertString = "INSERT INTO " . $tableName . "(name, model, price) 
+    // VALUES ('" . $recordData['name'] . "', '" . $recordData['model'] . "', '" . $recordData['price'] . "')";
+
+    // $insertString1 = "INSERT INTO " . $tableName . "(brand) VALUES ('" . $recordData['brand'] . "')";
+   
+    // $insertData = $link->query($insertString);
+    // $insertData1 = $link->query($insertString1);
+
+    if (!$insertData) {
         echo "<br>" . $insertString . "<br><br>";
-        echo "<br>" . $insertString1 . "<br><br>";
+        //echo "<br>" . $insertString1 . "<br><br>";
         echo 'Error: ' . $link->error . '\n';
         return false;
       } else {
        return $link->insert_id; 
    }
+
+
+//     $insertString = "INSERT INTO " . $tableName . "(name, model, price) 
+//     VALUES ('" . $recordData[0] . "', '" . $recordData[1] . "', '" . $recordData[2] . "')";
+
+//     $insertString1 = "INSERT INTO " . $tableName . "(brand) VALUES ('" . $recordData[0] . "')";
+   
+//     $insertData = $link->query($insertString);
+//     $insertData1 = $link->query($insertString1);
+
+//     if (!$insertData || !$insertData1) {
+//         echo "<br>" . $insertString . "<br><br>";
+//         echo "<br>" . $insertString1 . "<br><br>";
+//         echo 'Error: ' . $link->error . '\n';
+//         return false;
+//       } else {
+//        return $link->insert_id; 
+//    }
 }
 
 

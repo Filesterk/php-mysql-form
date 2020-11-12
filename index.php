@@ -46,15 +46,33 @@ $array = array_chunk($allItems, 4);
 }
 </style>
 
+<!--get_record_by_id-->
 <?php
    $recordId = 3; 
    $idItems = get_record_by_id($dbLink, $recordId, 'item');  
    var_dump($idItems);
 ?>
 
+<!--insert_new_record-->
 <?php   
-  $recordData = array($_POST['name'], $_POST['model'], $_POST['price']);
+  // $recordData = array($_POST['name'], $_POST['model'], $_POST['price']);
+  //   if (isset($_POST['name']) && isset($_POST['model']) && isset($_POST['price'])) {
+
+  //   $name = $_POST['name'];
+  //   $model = $_POST['model'];
+  //   $price = $_POST['price'];
+
+  //   $insertItemId = insert_new_record($dbLink, $recordData, 'item');  
+  //   var_dump($insertItemId); 
+  //   var_dump($_POST); 
+  // } 
+  //   else {
+  //   echo 'Поле было не заполнено'.'<br>'; 
+  // }
+
+  $recordData = array('name'=>$_POST['name'], 'model'=>$_POST['model'], 'price'=>$_POST['price']);
     if (isset($_POST['name']) && isset($_POST['model']) && isset($_POST['price'])) {
+      //if (isset('name') && isset('model') && isset('price')) {
 
     $name = $_POST['name'];
     $model = $_POST['model'];
@@ -67,24 +85,11 @@ $array = array_chunk($allItems, 4);
     else {
     echo 'Поле было не заполнено'.'<br>'; 
   }
-
-// if (empty($_POST['name'])) {
-//   echo 'Поле не заполнено'.'<br>';
-// } else {
-//   echo 'Поле было заполнено'.'<br>';
-//   $name = $_POST['name'];
-//   $model = $_POST['model'];
-//   $price = $_POST['price'];
-// }
-         
-//    $insertItemId = insert_new_record($dbLink, $recordData, 'item');  
-//    var_dump($insertItemId); 
-//    var_dump($_POST); 
 ?>
-
 <?php   
-  $recordData = array($_POST['brand']); 
+$recordData = array('brand'=> $_POST['brand']);
     if (isset($_POST['brand'])) {
+    //  if (isset('brand')) {
 
     $name = $_POST['brand'];
 
@@ -95,23 +100,19 @@ $array = array_chunk($allItems, 4);
     else{
         echo "Информация не занесена в базу данных";
     }
-  
-  
-  // $insertItemId = insert_new_record($dbLink, $recordData, 'manufacturer');  
-  // var_dump($insertItemId); 
-  //  var_dump($_POST);  
 
-  //  $recordData = array($_POST['brand']); 
-  //  if (empty($_POST['click'])) {
-  //    echo 'Поле не заполнено'.'<br>';
-  //  } else {
-  //    echo 'Поле было заполнено'.'<br>';
-  //    $name = $_POST['brand'];
-  //  }
-             
-  //     $insertItemId = insert_new_record($dbLink, $recordData, 'manufacturer'); 
-  //     var_dump($insertItemId); 
-  //     var_dump($_POST);
+  // $recordData = array($_POST['brand']); 
+  //   if (isset($_POST['brand'])) {
+
+  //   $name = $_POST['brand'];
+
+  //   $insertItemId = insert_new_record($dbLink, $recordData, 'manufacturer'); 
+  //   var_dump($insertItemId); 
+  //   var_dump($_POST);
+  //   }
+  //   else{
+  //       echo "Информация не занесена в базу данных";
+  //   }
 ?>
 
 <!DOCTYPE html>
