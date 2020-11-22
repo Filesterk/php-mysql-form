@@ -61,6 +61,3 @@
     }
 ?>
 
-
-$recordData = array('first'=>$_POST['name'], 'second'=>$_POST['model'], 'third'=>$_POST['price']);
- $recordData = array('four'=>$_POST['brand']); 

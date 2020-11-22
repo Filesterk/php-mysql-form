@@ -54,25 +54,9 @@ $array = array_chunk($allItems, 4);
 ?>
 
 <!--insert_new_record-->
-<?php   
-  // $recordData = array($_POST['name'], $_POST['model'], $_POST['price']);
-  //   if (isset($_POST['name']) && isset($_POST['model']) && isset($_POST['price'])) {
-
-  //   $name = $_POST['name'];
-  //   $model = $_POST['model'];
-  //   $price = $_POST['price'];
-
-  //   $insertItemId = insert_new_record($dbLink, $recordData, 'item');  
-  //   var_dump($insertItemId); 
-  //   var_dump($_POST); 
-  // } 
-  //   else {
-  //   echo 'Поле было не заполнено'.'<br>'; 
-  // }
-
+<?php 
   $recordData = array('name'=>$_POST['name'], 'model'=>$_POST['model'], 'price'=>$_POST['price']);
     if (isset($_POST['name']) && isset($_POST['model']) && isset($_POST['price'])) {
-      //if (isset('name') && isset('model') && isset('price')) {
 
     $name = $_POST['name'];
     $model = $_POST['model'];
@@ -86,10 +70,10 @@ $array = array_chunk($allItems, 4);
     echo 'Поле было не заполнено'.'<br>'; 
   }
 ?>
+
 <?php   
 $recordData = array('brand'=> $_POST['brand']);
     if (isset($_POST['brand'])) {
-    //  if (isset('brand')) {
 
     $name = $_POST['brand'];
 
@@ -100,20 +84,9 @@ $recordData = array('brand'=> $_POST['brand']);
     else{
         echo "Информация не занесена в базу данных";
     }
-
-  // $recordData = array($_POST['brand']); 
-  //   if (isset($_POST['brand'])) {
-
-  //   $name = $_POST['brand'];
-
-  //   $insertItemId = insert_new_record($dbLink, $recordData, 'manufacturer'); 
-  //   var_dump($insertItemId); 
-  //   var_dump($_POST);
-  //   }
-  //   else{
-  //       echo "Информация не занесена в базу данных";
-  //   }
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
